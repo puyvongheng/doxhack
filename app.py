@@ -52,5 +52,5 @@ def get_students():
     return jsonify(load_students())
 
 if __name__ == '__main__':
-    CORS(app, resources={r"/api/*": {"origins": "*"}})  # Allow only specific API prefix
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Get PORT from environment or default to 5000
+    app.run(host="0.0.0.0", port=port, debug=True)
